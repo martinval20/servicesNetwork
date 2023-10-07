@@ -7,6 +7,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 
+//All of these function is used just for the authentication and log out
 export const LoginAPI = (email, password) => {
   try {
     let response = signInWithEmailAndPassword(auth, email, password);
@@ -25,7 +26,7 @@ export const RegisterAPI = (email, password) => {
   }
 };
 
-export const GoogleSignInAPI = (email, password) => {
+export const GoogleSignInAPI = () => {
   try {
     let googleProvider = new GoogleAuthProvider();
     let res = signInWithPopup(auth, googleProvider);
