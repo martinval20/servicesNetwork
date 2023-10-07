@@ -6,7 +6,7 @@
     border-radius: 5px;
     display: flex;
     justify-content: center;
-  
+    align-items: center;
     flex-direction: column;
     padding: 20px;
     .name {
@@ -17,7 +17,7 @@
       margin-top: -7px;
     }
   
-    .headline {
+    .labores {
       font-size: 14px;
       font-weight: 400;
       color: rgba(0, 0, 0, 0.9);

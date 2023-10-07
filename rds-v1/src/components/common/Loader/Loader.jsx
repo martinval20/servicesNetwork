@@ -6,7 +6,7 @@ import "./Loader.scss"
 export default function Loader() {
   return (
     <div className="loader">
-    <p>Cargando... No les pagamos lo suficiente a los programadores</p>
+    <p>Cargando... Tranquilo, no hiciste nada mal</p>
       <Space size="middle">
         <Spin size="large" />
       </Space>
