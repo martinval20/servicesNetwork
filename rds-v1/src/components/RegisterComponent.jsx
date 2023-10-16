@@ -4,6 +4,7 @@ import { postUserData } from "../api/FirestoreAPI";
 import snLogo from "../assets/snLogo.png";
 import GoogleButton from "react-google-button";
 import { useNavigate } from "react-router-dom";
+import { getUniqueID } from "../helpers/getUniqueId";
 import "../Sass/LoginComponent.scss";
 import { toast } from "react-toastify";
 
@@ -14,9 +15,16 @@ export default function RegisterComponent() {
     try {
       let res = await RegisterAPI(credentials.email, credentials.password);
       toast.success("¡Tu cuenta se ha registrado exitosamente!");
-      postUserData({name: credentials.name, lastname: credentials.lastname, email: credentials.email})
+      postUserData({
+        userID: getUniqueID(),
+        name: credentials.name,
+        lastname: credentials.lastname,
+        email: credentials.email,
+        imageLink:
+          "https://objetivoligar.com/wp-content/uploads/2017/03/blank-profile-picture-973460_1280-768x768.jpg",
+      });
       navigate("/home");
-      localStorage.setItem('userEmail',res.user.email);
+      localStorage.setItem("userEmail", res.user.email);
     } catch (err) {
       console.log(err);
       toast.error("Algo salió mal, intente más tarde :(");
@@ -38,7 +46,7 @@ export default function RegisterComponent() {
         </p>
 
         <div className="auth-inputs">
-        <input
+          <input
             onChange={(event) =>
               setCredentials({ ...credentials, name: event.target.value })
             }
@@ -46,7 +54,7 @@ export default function RegisterComponent() {
             className="common-input"
             placeholder="Nombre"
           />
-           <input
+          <input
             onChange={(event) =>
               setCredentials({ ...credentials, lastname: event.target.value })
             }

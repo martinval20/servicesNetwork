@@ -1,6 +1,6 @@
-$blue1: #0094e3;
-$blue2: #00507a;
-$blue3: #001b86;
+$orange1: #ff6a06f2;
+$orange2: #ff993f;
+$orange3: #d16f06;
 
 body {
   margin: 0;
@@ -8,6 +8,7 @@ body {
 }
 
 .login-wrapper {
+  height: 750px;  
   background-color: white;
   .login-wrapper-inner{
     display: flex;
@@ -30,7 +31,7 @@ body {
   width: 300px;
   height: 50px;
   cursor: pointer;
-  background-color: $blue1;
+  background-color: $orange1;
   border-radius: 30px;
   outline: none;
   border: none;
@@ -42,7 +43,7 @@ body {
 }
 
 .login-btn:hover{
-    background-color: $blue3;
+    background-color: $orange3;
 }
 
 .auth-inputs {
@@ -64,7 +65,7 @@ body {
     margin: 10 0px;
   }
   .common-input:focus {
-    outline: 1 px solid $blue2;
+    outline: 1 px solid $orange2;
   }
   ::placeholder {
     font-family: system-ui;
@@ -126,7 +127,7 @@ body {
     }
   
     .join-now {
-      color: $blue1;
+      color: $orange1;
       font-family: system-ui;
       cursor: pointer;
       font-size: 18px;

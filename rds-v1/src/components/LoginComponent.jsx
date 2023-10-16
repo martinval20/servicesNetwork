@@ -6,9 +6,12 @@ import { useNavigate } from "react-router-dom";
 import "../Sass/LoginComponent.scss";
 import { toast } from "react-toastify";
 
+//On this component Im gonna put all that I will see on my login page
+
 export default function LoginComponent() {
   let navigate = useNavigate();
   const [credentials, setCredentials] = useState({});
+
   const login = async () => {
     try {
       let res = await LoginAPI(credentials.email, credentials.password);
@@ -21,8 +24,8 @@ export default function LoginComponent() {
     }
   };
 
-  const googleSignIn = () => {
-    let response = GoogleSignInAPI();
+  const googleSignIn = async() => {
+    let response = await GoogleSignInAPI();
     navigate("/home");
   };
   return (
