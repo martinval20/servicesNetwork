@@ -1,2 +1,2 @@
 # servicesNetwork
-A proyect develop by me for a university subject
+A proyect developed by me for a university subject
