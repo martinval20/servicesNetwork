@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { AiOutlineUserAdd } from "react-icons/ai";
 import { getContacts } from "../../../api/FirestoreAPI";
 
 export default function ContactedUsers({ user, getCurrentUser, currentUser }) {
@@ -9,12 +10,17 @@ export default function ContactedUsers({ user, getCurrentUser, currentUser }) {
   return isContacted ? (
     <></>
   ) : (
-    <div className="grid-child" onClick={() => getCurrentUser(user.id)}>
-      <p>
+    <div className="grid-child" >
+      <img src={user.imageLink} />
+      <p className="name">
         {" "}
         {user.name} {user.lastname}{" "}
       </p>
-      <p> {user.labores} </p>
+      <p className="labores"> {user.labores} </p>
+      <button onClick={() => getCurrentUser(user.id)}>
+        <AiOutlineUserAdd size={20} />
+        Conectar
+      </button>
     </div>
   );
 }
