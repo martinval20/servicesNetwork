@@ -10,8 +10,8 @@ export default function HomeLayout() {
     getCurrentUser(setCurrentUser);
   }, []);
   return (
-    <div className="div-container">
-      <Topbar />
+    <div className="div-container" >
+      <Topbar currentUser={currentUser}/>
       <Home currentUser={currentUser} />
     </div>
   );
