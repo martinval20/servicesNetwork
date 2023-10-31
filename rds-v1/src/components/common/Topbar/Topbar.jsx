@@ -41,7 +41,7 @@ export default function Topbar({ currentUser }) {
     if (searchInput !== "") {
       let searched = users.filter((user) => {
         return Object.values(user)
-          .join("")
+          .join(" ")
           .toLowerCase()
           .includes(searchInput.toLowerCase());
       });
@@ -55,7 +55,7 @@ export default function Topbar({ currentUser }) {
   useEffect(() => {
     let debounced = setTimeout(() => {
       handleSearch();
-    }, 1000);
+    }, 500);
 
     return () => clearTimeout(debounced);
   }, [searchInput]);
@@ -123,13 +123,16 @@ export default function Topbar({ currentUser }) {
       ) : (
         <div className="search-results">
           {filteredUsers.length === 0 ? (
-            <div className="search-inner">No hay resultados ... </div>
+            <div className="search-inner">No se hallaron resultados ... </div>
           ) : (
             filteredUsers.map((user) => (
               <div className="search-inner" onClick={() => openUser(user)}>
                 <img src={user.imageLink} />
                 <p className="name">
                   {user.name} {user.lastname}
+                </p>
+                <p className="labores">
+                  {user.labores}
                 </p>
               </div>
             ))
