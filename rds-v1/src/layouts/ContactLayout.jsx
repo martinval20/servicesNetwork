@@ -11,7 +11,7 @@ export default function ContactLayout() {
   }, []);
   return (
     <div className="div-container">
-      <Topbar />
+      <Topbar currentUser={currentUser}/>
       <Contacts currentUser={currentUser} />
     </div>
   );
