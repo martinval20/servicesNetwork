@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button, Modal } from "antd";
 import {
   getCurrentUser,
   getAllUsers,
@@ -15,8 +16,8 @@ export default function PostsCard({ posts, id, getEditData }) {
   let navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState({});
   const [allUsers, setAllUsers] = useState([]);
+  const [imageModal, setImageModal] = useState(false);
   const [isContacted, setIsContacted] = useState(false);
-  
 
   useMemo(() => {
     getCurrentUser(setCurrentUser);
@@ -27,8 +28,7 @@ export default function PostsCard({ posts, id, getEditData }) {
     getContacts(currentUser.id, posts.userID, setIsContacted);
   }, [currentUser.id, posts.userID]);
 
-  return (
-    isContacted ? 
+  return isContacted || currentUser.id === posts.userID ? (
     <div className="posts-card" key={id}>
       <div className="post-image-wrapper">
         {currentUser.id === posts.userID ? (
@@ -75,14 +75,42 @@ export default function PostsCard({ posts, id, getEditData }) {
           <p className="timestamp">{posts.timeStamp}</p>
         </div>
       </div>
-
-      <p className="status">{posts.status}</p>
-
+      
+      <p
+        className="status"
+        dangerouslySetInnerHTML={{ __html: posts.status }}
+      ></p>
+{posts.postImage ? (
+        <img
+          onClick={() => setImageModal(true)}
+          src={posts.postImage}
+          className="status-img"
+          alt="post-image"
+        />
+      ) : (
+        <></>
+      )}
       <InterestButton
         userId={currentUser?.id}
         postId={posts.id}
         currentUser={currentUser}
       />
-    </div> : <></>
+      <Modal
+        centered
+        open={imageModal}
+        onOk={() => setImageModal(false)}
+        onCancel={() => setImageModal(false)}
+        footer={[]}
+      >
+        <img
+          onClick={() => setImageModal(true)}
+          src={posts.postImage}
+          className="status-img"
+          alt="post-image"
+        />
+      </Modal>
+    </div>
+  ) : (
+    <></>
   );
 }

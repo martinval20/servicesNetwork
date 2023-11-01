@@ -32,7 +32,7 @@ export default function FileUploadModal({
         <div className="image-upload-main">
           <p>{currentImage.name}</p>
           <label className="upload-btn" for="image-upload">
-            Selecciona una Imagen{" "}
+            Seleccione una Imagen{" "}
           </label>
           {progress == 0 ? (
             <></>
@@ -41,7 +41,13 @@ export default function FileUploadModal({
               <Progress type="circle" percent={progress} />
             </div>
           )}
-          <input hidden id="image-upload" type={"file"} onChange={getImage} />
+          <input
+            hidden
+            id="image-upload"
+            type={"file"}
+            accept="image/*"
+            onChange={getImage}
+          />
         </div>
       </Modal>
     </div>
