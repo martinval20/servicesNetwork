@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button, Modal } from "antd";
 import {
   getCurrentUser,
   getAllUsers,
@@ -74,7 +75,7 @@ export default function PostsCard({ posts, id, getEditData }) {
           <p className="timestamp">{posts.timeStamp}</p>
         </div>
       </div>
-      <p
+<p
         className="status"
         dangerouslySetInnerHTML={{ __html: posts.status }}
       ></p>

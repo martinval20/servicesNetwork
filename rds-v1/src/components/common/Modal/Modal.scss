@@ -8,29 +8,29 @@
   width: 100%;
   resize: none;
 }
+.picture-icon{
+  color:#f95b00;
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px;
+}
 
 .ql-container.ql-snow,
 .ql-toolbar.ql-snow {
   border: none !important;
+  width: 100%;
 }
 
 .ql-container.ql-snow {
   font-size: 20px;
   font-family: system-ui;
-}
-
-.picture-icon {
-  color: #0073b1;
-  cursor: pointer;
-  position: absolute;
-  bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .preview-image {
   width: 100%;
   margin-top: 20px;
 }
-
 .posts-body {
   display: flex;
   justify-content: center;
