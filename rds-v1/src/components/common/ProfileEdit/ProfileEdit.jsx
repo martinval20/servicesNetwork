@@ -19,72 +19,111 @@ export default function ProfileEdit({ onEdit, currentUser }) {
   //console.log(editInputs);
   return (
     <div className="profile-card">
-      <div className="edit-btn">
+      <div className="edit-btn1">
         <AiOutlineClose className="close-icon" onClick={onEdit} size={25} />
       </div>
-      <div className="profile-edit-inputs">
-        <label>Nombres: </label>
-        <input
-          onChange={getInput}
-          className="common-input"
-          placeholder="Nombre"
-          name="name"
-          value={editInputs.name}
-        />
-        <label>Apellidos: </label>
-        <input
-          onChange={getInput}
-          className="common-input"
-          placeholder="Apellido"
-          name="lastname"
-          value={editInputs.lastname}
-        />
-        <label>Habilidades: </label>
-        <input
-          onChange={getInput}
-          className="common-input"
-          placeholder="Habilidades"
-          name="skills"
-          value={editInputs.skills}
-        />
-        <label>Labores: </label>
-        <input
-          onChange={getInput}
-          className="common-input"
-          placeholder="Labores"
-          name="labores"
-          value={editInputs.labores}
-        />
-        <label>Ciudad: </label>
-        <input
-          onChange={getInput}
-          className="common-input"
-          placeholder="Ciudad"
-          name="city"
-          value={editInputs.city}
-        />
-        <label>Distrito: </label>
-        <input
-          onChange={getInput}
-          className="common-input"
-          placeholder="Distrito"
-          name="district"
-          value={editInputs.district}
-        />
-        <label>Sobre mí</label>
-        <textarea
-          placeholder="Sobre mí"
-          onChange={getInput}
-          className="common-textArea"
-          rows={5}
-          name="aboutme"
-          value={editInputs.aboutme}
-        />
-      </div>
-      <div className="save-container">
-        <button className="save-btn" onClick={updateProfileData}>
-          Guardar
-        </button>
+      <div className="edit-inputs">
+        <div className="edit-inputs">
+          <input
+            onChange={getInput}
+            className="common-input"
+            autoComplete="off"
+            type="text"
+            name="name"
+            value={editInputs.name}
+            id="name"
+          />
+          <label className="label" htmlFor="name">
+            Nombres{" "}
+          </label>
+        </div>
+        <div className="edit-inputs">
+          <input
+            onChange={getInput}
+            className="common-input"
+            autoComplete="off"
+            type="text"
+            name="lastname"
+            value={editInputs.lastname}
+            id="lastname"
+          />
+          <label className="label" htmlFor="lastname">
+            Apellidos{" "}
+          </label>
+        </div>
+        <div className="edit-inputs">
+          <input
+            onChange={getInput}
+            className="common-input"
+            autoComplete="off"
+            type="text"
+            name="skills"
+            value={editInputs.skills}
+            id="skills"
+          />
+          <label className="label" htmlFor="skills">
+            Habilidades{" "}
+          </label>
+        </div>
+        <div className="edit-inputs">
+          <input
+            onChange={getInput}
+            className="common-input"
+            autoComplete="off"
+            type="text"
+            name="labores"
+            value={editInputs.labores}
+            id="labores"
+          />{" "}
+          <label className="label" htmlFor="labores">
+            Labores{" "}
+          </label>
+        </div>
+        <div className="edit-inputs">
+          <input
+            onChange={getInput}
+            className="common-input"
+            autoComplete="off"
+            type="text"
+            name="city"
+            value={editInputs.city}
+            id="city"
+          />{" "}
+          <label className="label" htmlFor="city">
+            Ciudad{" "}
+          </label>
+        </div>
+        <div className="edit-inputs">
+          <input
+            onChange={getInput}
+            className="common-input"
+            type="text"
+            autoComplete="off"
+            name="district"
+            value={editInputs.district}
+            id="district"
+          />
+          <label className="label" htmlFor="district">
+            Distrito{" "}
+          </label>
+        </div>
+        <div className="edit-inputs">
+          <label>Sobre mí</label>
+          <textarea
+            placeholder="Sobre mí"
+            onChange={getInput}
+            className="common-textArea"
+            rows={5}
+            name="aboutme"
+            value={editInputs.aboutme}
+          />
+        </div>
+
+        <div className="save-container">
+          <button className="save-btn" onClick={updateProfileData}>
+            Guardar
+          </button>
+        </div>
       </div>
     </div>
   );

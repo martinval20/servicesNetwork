@@ -75,12 +75,11 @@ export default function PostsCard({ posts, id, getEditData }) {
           <p className="timestamp">{posts.timeStamp}</p>
         </div>
       </div>
-      
-      <p
+<p
         className="status"
         dangerouslySetInnerHTML={{ __html: posts.status }}
       ></p>
-{posts.postImage ? (
+      {posts.postImage ? (
         <img
           onClick={() => setImageModal(true)}
           src={posts.postImage}
@@ -90,25 +89,12 @@ export default function PostsCard({ posts, id, getEditData }) {
       ) : (
         <></>
       )}
+
       <InterestButton
         userId={currentUser?.id}
         postId={posts.id}
         currentUser={currentUser}
       />
-      <Modal
-        centered
-        open={imageModal}
-        onOk={() => setImageModal(false)}
-        onCancel={() => setImageModal(false)}
-        footer={[]}
-      >
-        <img
-          onClick={() => setImageModal(true)}
-          src={posts.postImage}
-          className="status-img"
-          alt="post-image"
-        />
-      </Modal>
     </div>
   ) : (
     <></>

@@ -1,33 +1,46 @@
+$orange1: #f7f0d9;
+$orange2: #f8f0d5;
+$orange3: #f1ac41;
+$orange4: #ef8f35;
+$orange5: #ea5727;
+$orange6: #ffe66b;
+$orange7: #e94627;
+$orange8: #c65314;
+$orange9: #e26a2c;
+$orange10: #ff8243;
+$orange11: #ffae69;
+$orange12: #ffd792;
+$orange13: #ffbb7b;
 .topbar-main {
   width: 100%;
-  height: 70px;
-  background-color: rgb(255, 115, 39);
+  height: 75px;
+  background-color: $orange10;
   display: flex;
   align-items: center;
 
 }
 
 .snLogo {
-  margin-top: 5px;
+  margin-top: 4px;
   margin-left: 20px;
-  width: 40px;
+  width: 50px;
 }
 
 .react-icons{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 55%;
-    margin-left: 30px;
+    width: 70%;
+    margin-left: 50px;
 }
 
 .react-icon{
-    color: white;
+    color: $orange1;
     cursor: pointer;
 }
 
 .react-icon:hover{
-    color: #212121;
+    color: $orange8;
 }
 .user-icon{
     color: white;
@@ -52,9 +65,9 @@
   top:60px;
   width: 290px;
   height: 300px;
-  background-color: white;
+  background-color: $orange13;
   border-radius: 10px;
-  border: 1px solid #bbbbbb;
+  border: 1px solid $orange12;
 }
 .search-inner{
   display: flex;
@@ -79,5 +92,5 @@
   }
 }
 .search-inner:hover{
-  background-color: #bbbbbb;
+  background-color: $orange4;
 }

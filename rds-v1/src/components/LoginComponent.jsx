@@ -3,9 +3,8 @@ import { LoginAPI, GoogleSignInAPI } from "../api/AuthAPI";
 import snLogo from "../assets/snLogo.png";
 import GoogleButton from "react-google-button";
 import { useNavigate } from "react-router-dom";
-import "../Sass/LoginComponent.scss";
 import { toast } from "react-toastify";
-
+import "../Sass/LoginComponent.scss";
 //On this component Im gonna put all that I will see on my login page
 
 export default function LoginComponent() {
@@ -24,7 +23,7 @@ export default function LoginComponent() {
     }
   };
 
-  const googleSignIn = async() => {
+  const googleSignIn = async () => {
     let response = await GoogleSignInAPI();
     navigate("/home");
   };
@@ -38,23 +37,37 @@ export default function LoginComponent() {
           Mantente conectado con quienes necesiten tu ayuda
         </p>
 
-        <div className="auth-inputs">
-          <input
-            onChange={(event) =>
-              setCredentials({ ...credentials, email: event.target.value })
-            }
-            type="email"
-            className="common-input"
-            placeholder="Ingrese su Email o Teléfono"
-          />
-          <input
-            onChange={(event) =>
-              setCredentials({ ...credentials, password: event.target.value })
-            }
-            type="password"
-            className="common-input"
-            placeholder="Ingrese su contraseña"
-          />
+        <div className="auth-inputs-l">
+          <div className="auth-inputs-l">
+            <input
+              onChange={(event) =>
+                setCredentials({ ...credentials, email: event.target.value })
+              }
+              type="email"
+              required
+              autoComplete="off"
+              className="common-input"
+              id="email"
+            />
+            <label className="label" htmlFor="email">
+              E-mail
+            </label>
+          </div>
+          <div className="auth-inputs-l">
+            <input
+              onChange={(event) =>
+                setCredentials({ ...credentials, password: event.target.value })
+              }
+              required
+              autoComplete="off"
+              type="password"
+              className="common-input"
+              id="password"
+            />
+            <label className="label" htmlFor="password">
+              Contraseña
+            </label>
+          </div>
         </div>
         <button onClick={login} className="login-btn">
           Ingresar

@@ -1,45 +1,120 @@
-$blue1: #0094e3;
-$blue2: #00507a;
-$blue3: #001b86;
+$orange1: #f7f0d9;
+$orange2: #f8f0d5;
+$orange3: #f1ac41;
+$orange4: #ef8f35;
+$orange5: #ea5727;
+$orange6: #ffe66b;
+$orange7: #e94627;
+$orange8: #c65314;
+$orange9: #e26a2c;
+$orange10: #ff8243;
+$orange11: #ffae69;
+$orange12: #ffd792;
+$orange13: #f7f0d9;
 
-.profile-edit-inputs {
-  display: grid;
-  margin-top: 40px;
-  gap: 20px;
-  label{
-    font-family: system-ui;
-    margin-bottom: -15px;
-  }
-  .edit-input {
-    width: 300px;
-    height: 40px;
-  }
-}
-
-.save-container{
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: auto;
+  height: auto;
+  color: $orange7;
+  background-color: $orange1;
+  //border: 2px solid #212121;
+  .edit-inputs {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+
+    .common-input {
+      color: $orange7;
+      padding: 1rem;
+      border: 2px solid $orange12;
+      border-radius: 10px;
+      transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      background-color: $orange2;
+      height: 5px;
+      width: 500px;
+      font-family: system-ui;
+      font-size: 20px;
+      margin: 50 0px;
+      z-index: 0;
+    }
+    .label {
+      position: absolute;
+      font-family: system-ui;
+      top: 44px;
+      left: 1px;
+      padding: 1px 4px 0 10px;
+      color: #9fa4ad;
+      font-size: 21px;
+      pointer-events: none;
+      border-radius: 10px;
+      transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1;
+    }
+    .common-input:focus {
+      border: 2px solid $orange7;
+    }
+    .common-input:focus + .label {
+      top: 15px;
+      left: 9px;
+      z-index: 0;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: $orange3;
+      color: $orange8;
+    }
+    .common-input:is(:focus, :valid) ~ label {
+      transform: translateY(-120%) scale(0.8);
+      background-color: $orange1;
+      padding-inline: 0.5rem;
+      color: $orange7;
+    }
+    .common-input:not(:placeholder-shown) + .label {
+      top: 19px;
+      left: 9px;
+      z-index: 10;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .save-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .save-btn {
+      width: 150px;
+      height: 50px;
+      cursor: pointer;
+      background-color: $orange10;
+      border-radius: 30px;
+      outline: none;
+      border: none;
+      font-family: system-ui;
+      font-weight: 600;
+      color: $orange7;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+    .save-btn:hover {
+      background-color: $orange9;
+      outline: #e94627;
+      border: #e94627;
+    }
+  }
+  .edit-btn1 {
+    left: 30%;
+    position: relative;
+    .close-icon {
+      cursor: pointer;
+    }
+    .close-icon:hover {
+      cursor: pointer;
+      background-color: $orange11;
+      border-radius: 100%;
+    }
+  }
 }
-
-.save-btn {
-    width: 300px;
-    height: 50px;
-    cursor: pointer;
-    background-color: $blue1;
-    border-radius: 30px;
-    outline: none;
-    border: none;
-    font-family: system-ui;
-    font-weight: 600;
-    color: #ffffff;
-    font-size: 18px;
-    margin-top: 20px;
-  }
-
-  .login-btn:hover {
-    background-color: $blue3;
-  }
-
-  .close-icon{
-    cursor: pointer;
-  }

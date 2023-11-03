@@ -1,18 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { RegisterAPI, GoogleSignInAPI } from "../api/AuthAPI";
 import { postUserData } from "../api/FirestoreAPI";
 import snLogo from "../assets/snLogo.png";
 import GoogleButton from "react-google-button";
 import { useNavigate } from "react-router-dom";
 import { getUniqueID } from "../helpers/getUniqueId";
-import "../Sass/LoginComponent.scss";
 import { toast } from "react-toastify";
+import "../Sass/RegisterComponent.scss";
 
 export default function RegisterComponent() {
   let navigate = useNavigate();
   const [credentials, setCredentials] = useState({});
-  const register = async () => {
-    try {
+  const password= useRef();
+  const passwordAgain= useRef();
+
+  const register = async (e) => {
+    e.preventDefault();
+    if(passwordAgain.current.value !== password.current.value){
+      toast.error("Las contraseñas no coinciden");
+    } else{
+      try {
       let res = await RegisterAPI(credentials.email, credentials.password);
       toast.success("¡Tu cuenta se ha registrado exitosamente!");
       postUserData({
@@ -29,6 +36,8 @@ export default function RegisterComponent() {
       console.log(err);
       toast.error("Algo salió mal, intente más tarde :(");
     }
+    }
+    
   };
 
   const googleSignIn = () => {
@@ -46,39 +55,80 @@ export default function RegisterComponent() {
         </p>
 
         <div className="auth-inputs">
-          <input
-            onChange={(event) =>
-              setCredentials({ ...credentials, name: event.target.value })
-            }
-            type="text"
-            className="common-input"
-            placeholder="Nombre"
-          />
-          <input
-            onChange={(event) =>
-              setCredentials({ ...credentials, lastname: event.target.value })
-            }
-            type="text"
-            className="common-input"
-            placeholder="Apellido"
-          />
+          <div className="auth-inputs">
+            <input
+              onChange={(event) =>
+                setCredentials({ ...credentials, name: event.target.value })
+              }
+              className="common-input"
+              required
+              autoComplete="off"
+              type="text"
+              id="name"
+            />
+            <label className="label" htmlFor="name">
+              Nombre
+            </label>
+          </div>
+          <div className="auth-inputs">
+            <input
+              onChange={(event) =>
+                setCredentials({ ...credentials, lastname: event.target.value })
+              }
+              className="common-input"
+              required
+              autoComplete="off"
+              type="text"
+              id="lastname"
+            />
+            <label className="label" htmlFor="lastname">
+              Apellido
+            </label>
+          </div>
 
-          <input
-            onChange={(event) =>
-              setCredentials({ ...credentials, email: event.target.value })
-            }
-            type="email"
-            className="common-input"
-            placeholder="Ingrese su Email o Teléfono"
-          />
-          <input
-            onChange={(event) =>
-              setCredentials({ ...credentials, password: event.target.value })
-            }
-            type="password"
-            className="common-input"
-            placeholder="Ingrese su contraseña"
-          />
+          <div className="auth-inputs">
+            <input
+              onChange={(event) =>
+                setCredentials({ ...credentials, email: event.target.value })
+              }
+              className="common-input"
+              required
+              autoComplete="off"
+              type="email"
+              id="email"
+            />
+            <label className="label" htmlFor="email">
+              E-mail
+            </label>
+          </div>
+          <div className="auth-inputs">
+            <input
+              onChange={(event) =>
+                setCredentials({ ...credentials, password: event.target.value })
+              }
+              className="common-input"
+              required ref={password}
+              autoComplete="off"
+              type="password"
+              minLength="6"
+              id="password"
+            />
+            <label className="label" htmlFor="password">
+              Contraseña
+            </label>
+          </div>
+          <div className="auth-inputs">
+            <input
+              className="common-input"
+              required ref={passwordAgain}
+              autoComplete="off"
+              type="password"
+              id="confirmPassword"
+            />
+            <label className="label" htmlFor="confirmPassword">
+              Confirmar contraseña
+            </label>
+          </div>
         </div>
         <button onClick={register} className="login-btn">
           Aceptar & Unirse
