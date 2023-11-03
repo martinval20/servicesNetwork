@@ -1,3 +1,4 @@
+
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
 $orange1: #f7f0d9;
 $orange2: #f8f0d5;
@@ -17,7 +18,7 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: white;
+  background-color: $orange2;
 }
 
 .login-wrapper {
@@ -61,12 +62,12 @@ body {
   color: $orange4;
 }
 
-.auth-inputs-l{
+.auth-inputs {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1px;
+  margin-bottom: 18px;
   width: 400px;
-  height: 150px;
+  height: 300px;
   position: relative;
 
   .common-input {
@@ -75,7 +76,7 @@ body {
     border: 2px solid $orange12;
     border-radius: 10px;
     transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    background-color: rgb(255, 240, 234);
+    background-color: $orange2;
     height: 20px;
     font-family: system-ui;
     font-size: 16px;
@@ -159,3 +160,24 @@ body {
   }
 }
 
+.google-btn-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .google-btn {
+    width: 300px !important;
+  }
+
+  .go-to-signup {
+    font-size: 20px;
+  }
+
+  .join-now {
+    color: $orange9;
+    font-family: system-ui;
+    cursor: pointer;
+    font-size: 18px;
+  }
+}

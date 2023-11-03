@@ -2,48 +2,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Poppins:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap");
 @import url("./components/common/Loader/Loader.scss");
 
-$orange1: #cc8330dc;
-$orange2: #ff993f;
-$orange3: #d16f06;
+$orange1: #f7f0d9;
+$orange2: #f8f0d5;
+$orange3: #f1ac41;
+$orange4: #ef8f35;
+$orange5: #ea5727;
+$orange6: #ffe66b;
+$orange7: #e94627;
+$orange8: #c65314;
+$orange9: #e26a2c;
+$orange10: #ff8243;
+$orange11: #ffae69;
+$orange12: #ffd792;
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color: #212121;
-  background-color: #ded2d2;
+  background-color: $orange2;
 
-  font-synthesis: none;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-}
-
-.common-input {
-  height: 20px;
-  padding: 10px;
-  background-color: white;
-  border: 1px solid #212121;
-  border-radius: 3px;
-  color: #212121;
-  font-family: system-ui;
-  font-size: 16px;
-}
-.common-input:focus{
-  outline: 1px solid $orange1;
-}
-::placeholder{
-  font-family: system-ui;
-  font-size: 16px;
-}
-
-.common-textArea{
-  padding: 10px;
-  background-color: white;
-  border: 1px solid #212121;
-  border-radius: 3px;
-  color: #212121;
-  font-family: system-ui;
-  font-size: 16px;
-  margin: -1px 0px;
 }

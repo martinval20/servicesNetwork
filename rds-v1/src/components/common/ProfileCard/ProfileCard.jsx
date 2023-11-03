@@ -12,15 +12,21 @@ export default function ProfileCard({ onEdit, currentUser }) {
   const [allStatus, setAllStatus] = useState([]);
   const [currentProfile, setCurrentProfile] = useState({});
   const [currentImage, setCurrentImage] = useState({});
-  const [progress, setProgress] = useState(0)
+  const [progress, setProgress] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
   const getImage = (event) => {
     setCurrentImage(event.target.files[0]);
   };
 
   const uploadImage = () => {
-    uploadImageAPI(currentImage, currentUser.id, setModalOpen, setProgress, setCurrentImage);
-    setCurrentImage({})
+    uploadImageAPI(
+      currentImage,
+      currentUser.id,
+      setModalOpen,
+      setProgress,
+      setCurrentImage
+    );
+    setCurrentImage({});
   };
 
   useMemo(() => {
@@ -43,18 +49,18 @@ export default function ProfileCard({ onEdit, currentUser }) {
         progress={progress}
       />
       <div className="profile-card">
-        <div className="edit-btn">
-          <BsPencil className="edit-icon" onClick={onEdit} />
-        </div>
         <div className="profile-info">
+          <div className="edit-btn">
+            <BsPencil className="edit-icon" onClick={onEdit} />
+          </div>
           <div>
             <img
               className="profile-image"
-              onClick={()=>setModalOpen(true)}
+              onClick={() => setModalOpen(true)}
               src={
                 Object.values(currentProfile).length === 0
-                ? currentUser.imageLink
-                : currentProfile?.imageLink
+                  ? currentUser.imageLink
+                  : currentProfile?.imageLink
               }
               alt="profile-image"
             />
