@@ -13,8 +13,8 @@ export default function PostStatus({ currentUser }) {
   const [allStatus, setAllStatus] = useState([]);
   const [currentPost, setCurrentPost] = useState({});
   const [isEdit, setIsEdit] = useState(false);
-  const [postImage, setPostImage] = useState("");
-
+  const [postImage, setPostImage]= useState("");
+  
   const sendStatus = async () => {
     let object = {
       status: status,
@@ -47,7 +47,6 @@ export default function PostStatus({ currentUser }) {
   useMemo(() => {
     getStatus(setAllStatus);
   }, []);
-
 
   return (
     <div className="post-status-main">

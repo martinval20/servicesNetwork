@@ -76,7 +76,7 @@ export default function PostsCard({ posts, id, getEditData }) {
           <p className="timestamp">{posts.timeStamp}</p>
         </div>
       </div>
-      <p
+<p
         className="status"
         dangerouslySetInnerHTML={{ __html: posts.status }}
       ></p>
