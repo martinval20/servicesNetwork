@@ -14,7 +14,7 @@ export default function PostStatus({ currentUser }) {
   const [currentPost, setCurrentPost] = useState({});
   const [isEdit, setIsEdit] = useState(false);
   const [postImage, setPostImage]= useState("");
-
+  
   const sendStatus = async () => {
     let object = {
       status: status,
@@ -66,6 +66,7 @@ export default function PostStatus({ currentUser }) {
         <button
           className="open-post-modal"
           onClick={() => {
+            console.log(getCurrentTimeStamp("LLLL"));
             setModalOpen(true);
             setIsEdit(false);
           }}

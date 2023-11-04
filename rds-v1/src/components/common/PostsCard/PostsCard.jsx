@@ -47,9 +47,10 @@ export default function PostsCard({ posts, id, getEditData }) {
         ) : (
           <></>
         )}
+
         <img
           alt="profile-image"
-          className="post-image"
+          className="profile-image"
           src={
             allUsers
               .filter((item) => item.id === posts.userID)
@@ -83,7 +84,7 @@ export default function PostsCard({ posts, id, getEditData }) {
         <img
           onClick={() => setImageModal(true)}
           src={posts.postImage}
-          className="status-img"
+          className="post-image"
           alt="post-image"
         />
       ) : (
@@ -95,6 +96,20 @@ export default function PostsCard({ posts, id, getEditData }) {
         postId={posts.id}
         currentUser={currentUser}
       />
+       <Modal
+        centered
+        open={imageModal}
+        onOk={() => setImageModal(false)}
+        onCancel={() => setImageModal(false)}
+        footer={[]}
+      >
+        <img
+          onClick={() => setImageModal(true)}
+          src={posts.postImage}
+          className="post-image modal"
+          alt="post-image"
+        />
+      </Modal>
     </div>
   ) : (
     <></>

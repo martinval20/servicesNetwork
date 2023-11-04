@@ -14,7 +14,7 @@
     gap: 10px;
     position: relative;
   }
-  .post-image {
+  .profile-image {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -28,7 +28,7 @@
     margin: 0px 0 0 0px;
     cursor: pointer;
   }
-  .labores{
+  .labores {
     font-family: system-ui;
     font-size: 14px;
     color: rgba(0, 0, 0, 0.6);
@@ -50,7 +50,6 @@
     font-weight: 400;
     color: rgba(0, 0, 0, 0.9);
   }
-  
 }
 
 .action-container {
@@ -59,21 +58,22 @@
   cursor: pointer;
   display: flex;
   top: 10px;
-  .action-icon{
+  .action-icon {
     color: #212121;
     padding: 10px;
   }
-  .action-icon:hover{
+  .action-icon:hover {
     color: #000000;
     background-color: #cacaca;
     padding: 10px;
     border-radius: 50%;
   }
 }
-.status-img{
+.post-image {
+  cursor: pointer;
   width: 100%;
-  object-fit: cover;
 }
 .modal {
   margin-top: 30px;
 }
+

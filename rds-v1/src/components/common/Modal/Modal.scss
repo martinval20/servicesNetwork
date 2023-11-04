@@ -22,35 +22,41 @@
 }
 
 .ql-container.ql-snow {
-  font-size: 20px;
-  font-family: system-ui;
-  margin-bottom: 25px;
+  font-size: 16px;
+  font-family: system-ui;height: 100px;
+}
+
+.picture-icon {
+  color: #b15e00;
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px;
 }
 
 .preview-image {
   width: 100%;
   margin-top: 20px;
 }
+
 .posts-body {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-}
-.image-upload-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: auto;
-  flex-direction: column;
-  label {
-    border: 1px solid #212121;
-    padding: 10px;
-    cursor: pointer;
-    font-family: system-ui;
-  }
-  .progress-bar {
-    padding: 20px;
-    height: 60px;
+  .image-upload-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    flex-direction: column;
+    label {
+      border: 1px solid #212121;
+      padding: 10px;
+      cursor: pointer;
+      font-family: system-ui;
+    }
+    .progress-bar {
+      padding: 20px;
+    }
   }
 }
