@@ -28,14 +28,7 @@ const ModalComponent = ({
         onOk={() => {
           setStatus("");
           setModalOpen(false);
-          setPostImage("");
-          setCurrentPost({});
-        }}
-        onCancel={() => {
-          setStatus("");
-          setModalOpen(false);
-          setPostImage("");
-          setCurrentPost({});
+          setPostImage(""); setCurrentPost({});
         }}
         footer={[
           <Button
