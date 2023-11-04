@@ -2,6 +2,7 @@ import React, { useState, useMemo } from "react";
 import { postStatus, getStatus, updatePost } from "../../../api/FirestoreAPI";
 import ModalComponent from "../Modal/Modal";
 import PostsCard from "../PostsCard/PostsCard";
+import { uploadPostImage } from "../../../api/ImageUpload";
 import { getCurrentTimeStamp } from "../../../helpers/useMoment";
 import { getUniqueID } from "../../../helpers/getUniqueId";
 import "./PostUpdate.scss";
@@ -12,15 +13,18 @@ export default function PostStatus({ currentUser }) {
   const [allStatus, setAllStatus] = useState([]);
   const [currentPost, setCurrentPost] = useState({});
   const [isEdit, setIsEdit] = useState(false);
+  const [postImage, setPostImage] = useState("");
+
   const sendStatus = async () => {
     let object = {
       status: status,
-      timeStamp: getCurrentTimeStamp("LLL"),
+      timeStamp: getCurrentTimeStamp("LLLL"),
       userEmail: currentUser.email,
       userName: currentUser.name,
       userLastname: currentUser.lastname,
       postID: getUniqueID(),
       userID: currentUser.id,
+      postImage: postImage,
     };
     await postStatus(object);
     await setModalOpen(false);
@@ -36,8 +40,7 @@ export default function PostStatus({ currentUser }) {
   };
 
   const updateStatus = () => {
-    console.log(status);
-    updatePost(currentPost.id, status);
+    updatePost(currentPost.id, status, postImage);
     setModalOpen(false);
   };
 
@@ -64,7 +67,7 @@ export default function PostStatus({ currentUser }) {
         <button
           className="open-post-modal"
           onClick={() => {
-            console.log(getCurrentTimeStamp("LLL"));
+            console.log(getCurrentTimeStamp("LLLL"));
             setModalOpen(true);
             setIsEdit(false);
           }}
@@ -80,6 +83,11 @@ export default function PostStatus({ currentUser }) {
         sendStatus={sendStatus}
         isEdit={isEdit}
         updateStatus={updateStatus}
+        uploadPostImage={uploadPostImage}
+        postImage={postImage}
+        setPostImage={setPostImage}
+        setCurrentPost={setCurrentPost}
+        currentPost={currentPost}
       />
       <div>
         {allStatus.map((posts) => {

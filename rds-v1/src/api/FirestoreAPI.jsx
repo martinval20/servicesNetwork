@@ -34,7 +34,7 @@ export const postStatus = (object) => {
 
 //Important!! Remember to use "desc" to indicate the correct order
 export const getStatus = (setAllStatus) => {
-  const q = query(postsRef, orderBy("timeStamp", "desc"));
+  const q = query(postsRef, orderBy("timeStamp"));
   onSnapshot(q, (response) => {
     setAllStatus(
       response.docs.map((docs) => {
@@ -189,10 +189,10 @@ export const getComments = (postId, setComments) => {
   }
 };
 
-export const updatePost = (id, status) => {
+export const updatePost = (id, status, postImage) => {
   let docToUpdate = doc(postsRef, id);
   try {
-    updateDoc(docToUpdate, { status });
+    updateDoc(docToUpdate, { status, postImage });
     toast.success("¡La publicación ha sido actualizada correctamente!");
   } catch (err) {
     console.log(err);
