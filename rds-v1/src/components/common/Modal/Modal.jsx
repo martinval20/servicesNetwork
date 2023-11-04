@@ -30,6 +30,12 @@ const ModalComponent = ({
           setModalOpen(false);
           setPostImage(""); setCurrentPost({});
         }}
+        onCancel={() => {
+          setStatus("");
+          setModalOpen(false);
+          setPostImage("");
+          setCurrentPost({});
+        }}
         footer={[
           <Button
             onClick={isEdit ? updateStatus : sendStatus}

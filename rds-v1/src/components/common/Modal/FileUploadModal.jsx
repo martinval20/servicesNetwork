@@ -13,7 +13,7 @@ export default function FileUploadModal({
   return (
     <div>
       <Modal
-        title="Agregar un Foto de Perfil"
+        title="Agregar una Foto de Perfil"
         centered
         open={modalOpen}
         onOk={() => setModalOpen(false)}
@@ -29,15 +29,15 @@ export default function FileUploadModal({
           </Button>,
         ]}
       >
-        <div className="image-upload-main">
+        <div className="image-upload-main1">
           <p>{currentImage.name}</p>
-          <label className="upload-btn" for="image-upload">
+          <label className="upload-btn1" htmlFor="image-upload">
             Seleccione una Imagen{" "}
           </label>
           {progress == 0 ? (
             <></>
           ) : (
-            <div className="progress-bar">
+            <div className="progress-bar1">
               <Progress type="circle" percent={progress} />
             </div>
           )}
