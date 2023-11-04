@@ -73,6 +73,7 @@ export default function InterestButton({ userId, postId, currentUser }) {
             onChange={getComment}
             placeholder="Comentar"
             className="comment-input"
+            autoComplete="off"
             name="comment"
             value={comment}
           />

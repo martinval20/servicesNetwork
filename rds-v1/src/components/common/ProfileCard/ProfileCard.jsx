@@ -49,6 +49,13 @@ export default function ProfileCard({ onEdit, currentUser }) {
         progress={progress}
       />
       <div className="profile-card">
+        {/* {currentUser.id === location?.state?.id ? (
+          <div className="edit-btn">
+            <BsPencil className="edit-icon" onClick={onEdit} />
+          </div>
+        ) : (
+          <></>
+        )} */}
         <div className="profile-info">
           <div className="edit-btn">
             <BsPencil className="edit-icon" onClick={onEdit} />
@@ -101,14 +108,14 @@ export default function ProfileCard({ onEdit, currentUser }) {
               {Object.values(currentProfile).length === 0
                 ? currentUser.skills
                 : currentProfile?.skills}
-            </p>
-          </div>
-        </div>
-        <p className="about-me">
+            </p><p className="about-me">
           {Object.values(currentProfile).length === 0
             ? currentUser.aboutme
             : currentProfile?.aboutme}
         </p>
+          </div>
+        </div>
+        
       </div>
 
       <div className="post-status-main">
