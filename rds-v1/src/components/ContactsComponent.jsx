@@ -3,7 +3,7 @@ import { getAllUsers, addContact } from "../api/FirestoreAPI";
 import ContactedUsers from "./common/ContactedUsers/ContactedUsers";
 import "../Sass/HomeComponent.scss";
 
-export default function ContactComponent({ currentUser }) {
+export default function ContactsComponent({ currentUser }) {
   const [users, setUsers] = useState([]);
   const getCurrentUser = (id) => {
     addContact(currentUser.id, id);
