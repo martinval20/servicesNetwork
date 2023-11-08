@@ -1,0 +1,57 @@
+$orange1: #f7f0d9;
+$orange2: #f8f0d5;
+$orange3: #f1ac41;
+$orange4: #ef8f35;
+$orange5: #ea5727;
+$orange6: #ffe66b;
+$orange7: #e94627;
+$orange8: #c65314;
+$orange9: #e26a2c;
+$orange10: #ff8243;
+$orange11: #ffae69;
+$orange12: #ffd792;
+$orange13: #f7f0d9;
+.home {
+  background-color: $orange8;
+  height: 100hv;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .container {
+    border: 1px solid #212121;
+    border-radius: 10px;
+    width: 65%;
+    height: 600px;
+    display: flex;
+    overflow: hidden;
+    .sidebar {
+      flex: 1;
+      background-color: $orange10;
+
+      .navbar{
+        display: flex;
+        align-items: center;
+        background-color: $orange2;
+        height: 50px;
+        padding: 10px;
+        justify-content: space-between;
+        color: $orange3;
+        .user{
+            display: flex;
+            gap: 20px;
+        }
+        img{
+            background-color: #ddddf7;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+      }
+    }
+    .chat {
+        flex: 2;
+    }
+  }
+}

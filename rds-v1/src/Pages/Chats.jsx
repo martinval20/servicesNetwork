@@ -3,7 +3,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebaseConfig";
 import Loader from "../components/common/Loader/Loader";
-import ContactsComponent from "../components/ContactsComponent";
+import ChatsComponent from "../components/ChatsComponent";
 
 export default function Contacts({ currentUser }) {
   const [loading, setLoading] = useState(true);
@@ -17,5 +17,5 @@ export default function Contacts({ currentUser }) {
       }
     });
   }, []);
-  return loading ? <Loader /> : <ContactsComponent currentUser={currentUser} />;
+  return loading ? <Loader /> : <ChatsComponent currentUser={currentUser} />;
 }

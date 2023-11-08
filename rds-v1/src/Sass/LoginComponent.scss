@@ -108,7 +108,7 @@ body {
     transform: translateY(-120%) scale(0.8);
     background-color:$orange13;
     padding-inline: 0.5rem;
-    color: $orange7;
+    color: $orange7; 
   }
   .common-input:not(:placeholder-shown)+ .label {
     top: 10px;

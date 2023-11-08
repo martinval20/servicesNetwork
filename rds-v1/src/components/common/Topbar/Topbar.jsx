@@ -108,7 +108,11 @@ export default function Topbar({ currentUser }) {
             className="react-icon"
             onClick={() => goToRoute("/contacts")}
           />
-          <TbMessageCircle2 size={30} className="react-icon" />
+          <TbMessageCircle2
+            size={30}
+            className="react-icon"
+            onClick={() => goToRoute("/chats")}
+          />
           <BsBell size={30} className="react-icon" />
         </div>
       )}
@@ -131,9 +135,7 @@ export default function Topbar({ currentUser }) {
                 <p className="name">
                   {user.name} {user.lastname}
                 </p>
-                <p className="labores">
-                  {user.labores}
-                </p>
+                <p className="labores">{user.labores}</p>
               </div>
             ))
           )}
