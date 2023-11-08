@@ -29,7 +29,7 @@ $orange13: #f7f0d9;
       flex: 1;
       background-color: $orange10;
 
-      .navbar{
+      .navbar {
         display: flex;
         align-items: center;
         background-color: $orange2;
@@ -37,21 +37,81 @@ $orange13: #f7f0d9;
         padding: 10px;
         justify-content: space-between;
         color: $orange3;
-        .user{
-            display: flex;
-            gap: 20px;
+        .user {
+          display: flex;
+          gap: 20px;
         }
-        img{
-            background-color: #ddddf7;
-            height: 24px;
-            width: 24px;
-            border-radius: 50%;
-            object-fit: cover;
+        img {
+          background-color: #ddddf7;
+          height: 24px;
+          width: 24px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+      .search {
+        border-bottom: 1px solid gray;
+
+        .searchForm {
+          padding: 10px;
+          input {
+            background-color: $orange2;
+            border: none;
+            color: black;
+            &::placeholder {
+              color: lightgrey;
+            }
+          }
+        }
+      }
+      .userChat {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: white;
+        cursor: pointer;
+        &:hover {
+          background-color: $orange7;
+        }
+
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+        .userChatInfo {
+          span {
+            font-size: 18px;
+            font-weight: 500;
+          }
+          p {
+            font-size: 14px;
+            color: lightgrey;
+          }
         }
       }
     }
     .chat {
-        flex: 2;
+      flex: 2;
+      .chatInfo{
+        height: 50px;
+        background-color: $orange4;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        color: #212121;
+      }
+      .chatIcons{
+        display: flex;
+        gap: 10px;
+        .action-icon{
+            font-size: 20px;
+            cursor: pointer;
+        }
+      }
     }
   }
 }
