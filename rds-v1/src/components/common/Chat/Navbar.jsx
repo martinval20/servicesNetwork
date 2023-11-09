@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
+import { useLocation } from "react-router-dom";
 
-const Navbar = () => {
+export default function Navbar({ currentUser }) {
+  let location = useLocation();
+  const [currentProfile, setCurrentProfile] = useState({});
+  console.log(currentUser.lastname);
+  useMemo(() => {
+    if (location?.state?.email) {
+      getSingleUser(setCurrentProfile, location?.state?.email);
+    }
+  }, []);
   return (
     <div className="navbar">
       <div className="user">
@@ -8,10 +17,10 @@ const Navbar = () => {
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYEfJo6j7axefgRh1oPdPgcwOBc8PeIw8LHR6QXMlosA&s"
           alt=""
         />
-        <span>Giovanni</span>
+        <span>
+          {currentUser.name} {currentUser.lastname}
+        </span>
       </div>
     </div>
   );
-};
-
-export default Navbar;
+}
