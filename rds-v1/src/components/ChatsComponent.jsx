@@ -3,16 +3,13 @@ import Sidebar from "./common/Chat/Sidebar";
 import Chat from "./common/Chat/Chat";
 import "../Sass/ChatComponent.scss";
 
-
-function ChatsComponent() {
+export default function ChatsComponent({ currentUser }) {
   return (
     <div className="home">
       <div className="container">
-        <Sidebar />
-        <Chat/>
+        <Sidebar currentUser={currentUser} />
+        <Chat currentUser={currentUser} />
       </div>
     </div>
   );
 }
-
-export default ChatsComponent;

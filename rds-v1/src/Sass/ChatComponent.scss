@@ -11,6 +11,22 @@ $orange10: #ff8243;
 $orange11: #ffae69;
 $orange12: #ffd792;
 $orange13: #f7f0d9;
+@mixin mobile{
+    @media screen and (max-width: 480px){
+        @content;
+    }
+}
+@mixin tablet{
+    @media screen and (max-width: 768px){
+        @content;
+    }
+}
+@mixin laptop{
+    @media screen and (max-width: 1200px){
+        @content;
+    }
+}
+ 
 .home {
   background-color: $orange8;
   height: 100hv;
@@ -25,6 +41,9 @@ $orange13: #f7f0d9;
     height: 600px;
     display: flex;
     overflow: hidden;
+    @include tablet{
+        width: 90%;
+    }
     .sidebar {
       flex: 1;
       background-color: $orange10;
@@ -95,7 +114,7 @@ $orange13: #f7f0d9;
     }
     .chat {
       flex: 2;
-      .chatInfo{
+      .chatInfo {
         height: 50px;
         background-color: $orange4;
         display: flex;
@@ -104,12 +123,97 @@ $orange13: #f7f0d9;
         padding: 10px;
         color: #212121;
       }
-      .chatIcons{
+      .chatIcons {
         display: flex;
         gap: 10px;
-        .action-icon{
-            font-size: 20px;
-            cursor: pointer;
+        .action-icon {
+          font-size: 20px;
+          cursor: pointer;
+        }
+      }
+      .messages{
+        background-color: #ddddf7;
+        padding: 10px;
+        height: calc(100% - 160px);
+        overflow: scroll;
+
+        .message{
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+
+            .messageInfo{
+                display: flex;
+                flex-direction: column;
+                color: gray;
+                font-weight: 300;
+                img{
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+            }
+            .messageContent{
+                max-width: 80%;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                p{
+                    background-color: white;
+                    padding: 10px 20px;
+                    border-radius: 0px 10px 10px 10px;
+                    max-width: max-content;
+                }
+                img{
+                    width: 50%;
+                }
+            }
+            &.owner{
+                flex-direction: row-reverse;
+                .messageContent{
+                    align-items: flex-end;
+                }
+                p{
+                    background-color: $orange2;
+                    color: white;
+                    border-radius: 10px 0px 10px 10px;
+                }
+            }
+        }
+      }
+      .input{
+        height: 50px;
+        background-color: white;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        input{
+            width: 100%;
+            border: none;   
+            outline: none;
+            color: #2f2d55;
+            font-size: 18px;
+            &::placeholder{
+                color: lightgray;
+            }
+        }
+        .send{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            .send-icon{
+                font-size: 24px;
+                cursor: pointer;
+            }
+            button{
+                border: none;
+                padding: 10px 15px;
+                color: white;
+                background-color: $orange3;
+                cursor: pointer;
+            }
         }
       }
     }

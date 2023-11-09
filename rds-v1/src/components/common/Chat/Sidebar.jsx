@@ -2,14 +2,16 @@ import React from "react";
 import Navbar from "./Navbar";
 import Search from "./Search";
 import Chats from "./Chats";
-const Sidebar = () => {
+
+export default function Sidebar({ currentUser }) {
   return (
     <div className="sidebar">
-      <Navbar />
-      <Search/>
-      <Chats/>
+      <Navbar currentUser={currentUser} />
+      <Search />
+      <Chats />
+      <Chats />
+      <Chats />
+      <Chats />
     </div>
   );
-};
-
-export default Sidebar;
+}
