@@ -29,7 +29,7 @@ export default function InterestButton({ userId, postId, currentUser }) {
     postComment(
       postId,
       comment,
-      getCurrentTimeStamp("LLL"),
+      getCurrentTimeStamp("LLLL"),
       currentUser?.name,
       currentUser?.lastname
     );
