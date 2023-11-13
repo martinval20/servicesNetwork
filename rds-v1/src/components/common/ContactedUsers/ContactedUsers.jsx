@@ -10,11 +10,11 @@ export default function ContactedUsers({ user, getCurrentUser, currentUser }) {
   return isContacted ? (
     <></>
   ) : (
-    <div className="grid-child" >
+    <div className="grid-child">
       <img src={user.imageLink} />
       <p className="name">
         {" "}
-        {user.name} {user.lastname}{" "}
+       {user.name} {user.lastname}{" "}
       </p>
       <p className="labores"> {user.labores} </p>
       <button onClick={() => getCurrentUser(user.id)}>

@@ -1,11 +1,12 @@
-//CHECH THIS LEATER
+//CHECK THIS LEATER
 import React, { useState } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { firestore } from "../../../firebaseConfig";
+import { getChat } from "../../../api/FirestoreAPI";
 
-const Search = () => {
+export default function Search({ currentUser }) {
   const [username, setUsername] = useState("");
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState([]);
   const [err, setErr] = useState(false);
 
   const handleSearch = async () => {
@@ -25,16 +26,21 @@ const Search = () => {
 
   const handleKey = (e) => {
     e.code === "Enter" && handleSearch();
-    console.log(username);
-    console.log(username.user);
   };
+  const combinedId =
+    currentUser.id > user.id
+      ? currentUser.id + user.id
+      : user.id + currentUser.id;
 
-  const handleSelect = async ()=>{
+  const handleSelect = async () => {
     //Check the group (chats in firestore)exists, if not then create
-    const res= await getDocs(firestore, "chats")
-
+    // const res = await getDocs(firestore, "chats");
+    console.log(user.length)
+    console.log(currentUser.id);
+    console.log(combinedId);
+    // getChat(combinedId)
     //create user chats
-  }
+  };
 
   return (
     <div className="search">
@@ -46,17 +52,16 @@ const Search = () => {
           onChange={(e) => setUsername(e.target.value)}
         />
       </div>
-      {err && <span>Usuario no encontrado</span>}
-      {user && (
-        <div className="userChat">
+      {user.length == 0 ? (<></>):(
+        <div className="userChat" onClick={handleSelect}>
           <img src={user.imageLink} alt="" />
           <div className="userChatInfo">
-            <span>{user.name} {user.lastname}</span>
+            <span>
+              {user.name} {user.lastname}
+            </span>
           </div>
         </div>
       )}
     </div>
   );
-};
-
-export default Search;
+}

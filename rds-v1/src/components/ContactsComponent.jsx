@@ -20,6 +20,7 @@ export default function ContactsComponent({ currentUser }) {
           <></>
         ) : (
           <ContactedUsers
+            key={user.id}
             currentUser={currentUser}
             user={user}
             getCurrentUser={getCurrentUser}

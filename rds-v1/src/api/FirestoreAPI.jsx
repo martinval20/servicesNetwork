@@ -12,6 +12,7 @@ import {
   setDoc,
   deleteDoc,
   limit,
+  getDocs,
 } from "firebase/firestore";
 import { toast } from "react-toastify";
 
@@ -22,15 +23,15 @@ let interestRef = collection(firestore, "interests");
 let commentsRef = collection(firestore, "comments");
 let contactRef = collection(firestore, "contacts");
 let userChatsRef = collection(firestore, "userChats");
-let chatsRef = collection(firestore, "chats"); 
+let chatsRef = collection(firestore, "chats");
 
-export const startChat = (ChatId, timeStamp, userInfo) => {
+export const getChat = (ChatId) => {
   try {
-    addDoc(userChatsRef, {
-      ChatId,
-      timeStamp,
-      userInfo,
-    });
+    
+      addDoc(userChatsRef, {
+        ChatId,
+      });
+
   } catch (err) {
     console.log(err);
   }
@@ -46,7 +47,6 @@ export const sendMessage = (MessageId, message) => {
     console.log(err);
   }
 };
-
 
 export const postStatus = (object) => {
   addDoc(postsRef, object)
@@ -119,7 +119,7 @@ export const editProfile = (userID, payLoad) => {
     });
 };
 
-//This function let me to get just one particular post 
+//This function let me to get just one particular post
 export const getSingleStatus = (setAllStatus, id) => {
   const singlePostQuery = query(postsRef, where("userID", "==", id));
   onSnapshot(singlePostQuery, (response) => {
@@ -131,8 +131,7 @@ export const getSingleStatus = (setAllStatus, id) => {
   });
 };
 
-
-//THis function let me to get just one single user
+//THis function let me to get just one single user by email
 export const getSingleUser = (setCurrentUser, email) => {
   const singleUserQuery = query(userRef, where("email", "==", email));
   onSnapshot(singleUserQuery, (response) => {
@@ -143,7 +142,6 @@ export const getSingleUser = (setCurrentUser, email) => {
     );
   });
 };
-
 
 //This function let the user show interest about one post
 export const interestPost = (userId, postId, interested) => {
