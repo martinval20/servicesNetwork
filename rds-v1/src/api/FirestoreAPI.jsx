@@ -21,6 +21,32 @@ let userRef = collection(firestore, "users");
 let interestRef = collection(firestore, "interests");
 let commentsRef = collection(firestore, "comments");
 let contactRef = collection(firestore, "contacts");
+let userChatsRef = collection(firestore, "userChats");
+let chatsRef = collection(firestore, "chats"); 
+
+export const startChat = (ChatId, timeStamp, userInfo) => {
+  try {
+    addDoc(userChatsRef, {
+      ChatId,
+      timeStamp,
+      userInfo,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const sendMessage = (MessageId, message) => {
+  try {
+    addDoc(chatsRef, {
+      MessageId,
+      message,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 
 export const postStatus = (object) => {
   addDoc(postsRef, object)

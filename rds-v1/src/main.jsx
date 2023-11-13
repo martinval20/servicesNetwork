@@ -8,7 +8,6 @@ import "react-toastify/dist/ReactToastify.css";
 import "reactjs-popup/dist/index.css";
 import "react-quill/dist/quill.snow.css";
 import "./index.scss";
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router} />
