@@ -6,7 +6,6 @@ import {
   signOut
 } from "firebase/auth";
 import { auth } from "../firebaseConfig";
-
 //All of these function is used just for the authentication and log out
 export const LoginAPI = (email, password) => {
   try {

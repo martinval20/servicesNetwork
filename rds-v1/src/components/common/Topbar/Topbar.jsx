@@ -125,12 +125,12 @@ export default function Topbar({ currentUser }) {
       {searchInput.length === 0 ? (
         <></>
       ) : (
-        <div className="search-results">
+        <div className="search-results" >
           {filteredUsers.length === 0 ? (
             <div className="search-inner">No se hallaron resultados ... </div>
           ) : (
             filteredUsers.map((user) => (
-              <div className="search-inner" onClick={() => openUser(user)}>
+              <div className="search-inner" onClick={() => openUser(user)} key={user.id}>
                 <img src={user.imageLink} />
                 <p className="name">
                   {user.name} {user.lastname}
