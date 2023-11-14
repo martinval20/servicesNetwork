@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { firestore } from "../../../firebaseConfig";
-import { getChat } from "../../../api/FirestoreAPI";
+import { createUserChats } from "../../../api/FirestoreAPI";
 
 export default function Search({ currentUser }) {
   const [username, setUsername] = useState("");

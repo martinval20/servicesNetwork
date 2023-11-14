@@ -26,9 +26,9 @@ export default function PostsCard({ posts, id, getEditData }) {
 
   useEffect(() => {
     getContacts(currentUser.id, posts.userID, setIsContacted);
-  }, [currentUser.id, posts.userID]);
+  }, [currentUser?.id, posts?.userID]);
 
-  return isContacted || currentUser.id === posts.userID ? (
+  return isContacted || currentUser?.id === posts?.userID ? (
     <div className="posts-card" key={id}>
       <div className="post-image-wrapper">
         {currentUser.id === posts.userID ? (
@@ -41,7 +41,7 @@ export default function PostsCard({ posts, id, getEditData }) {
             <MdOutlineDeleteForever
               size={20}
               className="action-icon"
-              onClick={() => deletePost(posts.id)}
+              onClick={() => deletePost(posts?.id)}
             />
           </div>
         ) : (
@@ -92,7 +92,7 @@ export default function PostsCard({ posts, id, getEditData }) {
       )}
 
       <InterestButton
-        userId={currentUser?.id}
+        userId={currentUser.id}
         postId={posts.id}
         currentUser={currentUser}
       />

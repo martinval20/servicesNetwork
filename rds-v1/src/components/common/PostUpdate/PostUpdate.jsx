@@ -13,8 +13,8 @@ export default function PostStatus({ currentUser }) {
   const [allStatus, setAllStatus] = useState([]);
   const [currentPost, setCurrentPost] = useState({});
   const [isEdit, setIsEdit] = useState(false);
-  const [postImage, setPostImage]= useState("");
-  
+  const [postImage, setPostImage] = useState("");
+
   const sendStatus = async () => {
     let object = {
       status: status,
@@ -51,16 +51,16 @@ export default function PostStatus({ currentUser }) {
   return (
     <div className="post-status-main">
       <div className="user-details">
-        <img src={currentUser.imageLink} alt="imageLink" />
+        <img src={currentUser?.imageLink} alt="imageLink" />
         <p className="name">
-          {currentUser.name} {currentUser.lastname}
+          {currentUser?.name} {currentUser?.lastname}
         </p>
-        <p className="labores">{currentUser.labores}</p>
+        <p className="labores">{currentUser?.labores}</p>
       </div>
       <div className="post-status">
         <img
           className="post-image"
-          src={currentUser.imageLink}
+          src={currentUser?.imageLink}
           alt="imageLink"
         />
         <button

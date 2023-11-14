@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { RegisterAPI, GoogleSignInAPI } from "../api/AuthAPI";
-import { postUserData } from "../api/FirestoreAPI";
+import { postUserData, createUserChats } from "../api/FirestoreAPI";
 import snLogo from "../assets/snLogo.png";
 import GoogleButton from "react-google-button";
 import { useNavigate } from "react-router-dom";
@@ -11,33 +11,32 @@ import "../Sass/RegisterComponent.scss";
 export default function RegisterComponent() {
   let navigate = useNavigate();
   const [credentials, setCredentials] = useState({});
-  const password= useRef();
-  const passwordAgain= useRef();
+  const password = useRef();
+  const passwordAgain = useRef();
 
   const register = async (e) => {
     e.preventDefault();
-    if(passwordAgain.current.value !== password.current.value){
+    if (passwordAgain.current.value !== password.current.value) {
       toast.error("Las contraseñas no coinciden");
-    } else{
+    } else {
       try {
-      let res = await RegisterAPI(credentials.email, credentials.password);
-      toast.success("¡Tu cuenta se ha registrado exitosamente!");
-      postUserData({
-        userID: getUniqueID(),
-        name: credentials.name,
-        lastname: credentials.lastname,
-        email: credentials.email,
-        imageLink:
-          "https://objetivoligar.com/wp-content/uploads/2017/03/blank-profile-picture-973460_1280-768x768.jpg",
-      });
-      navigate("/home");
-      localStorage.setItem("userEmail", res.user.email);
-    } catch (err) {
-      console.log(err);
-      toast.error("Algo salió mal, intente más tarde :(");
+        let res = await RegisterAPI(credentials.email, credentials.password);
+        toast.success("¡Tu cuenta se ha registrado exitosamente!");
+        postUserData({
+          userID: getUniqueID(),
+          name: credentials.name,
+          lastname: credentials.lastname,
+          email: credentials.email,
+          imageLink:
+            "https://objetivoligar.com/wp-content/uploads/2017/03/blank-profile-picture-973460_1280-768x768.jpg",
+        });
+        navigate("/home");
+        localStorage.setItem("userEmail", res.user.email);
+      } catch (err) {
+        console.log(err);
+        toast.error("Algo salió mal, intente más tarde :(");
+      }
     }
-    }
-    
   };
 
   const googleSignIn = () => {
@@ -107,7 +106,8 @@ export default function RegisterComponent() {
                 setCredentials({ ...credentials, password: event.target.value })
               }
               className="common-input"
-              required ref={password}
+              required
+              ref={password}
               autoComplete="off"
               type="password"
               minLength="6"
@@ -120,7 +120,8 @@ export default function RegisterComponent() {
           <div className="auth-inputs">
             <input
               className="common-input"
-              required ref={passwordAgain}
+              required
+              ref={passwordAgain}
               autoComplete="off"
               type="password"
               id="confirmPassword"
