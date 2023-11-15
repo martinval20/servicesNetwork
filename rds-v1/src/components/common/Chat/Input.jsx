@@ -1,4 +1,4 @@
-import { Timestamp, arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { Timestamp, arrayUnion, doc, serverTimestamp, updateDoc } from "firebase/firestore";
 import React, { useState, useContext } from "react";
 import { IoIosAttach } from "react-icons/io";
 import { MdOutlineAddPhotoAlternate } from "react-icons/md";
@@ -16,7 +16,7 @@ export default function Input({ currentUser }) {
   const { data } = useContext(ChatContext);
 
   const handleSend = async () => {
-    console.log(data.id);
+    console.log(data.user.id);
     if (img) {
       const storageRef = ref(storage, `chatImages/${uuid()}`);
       const uploadTask = uploadBytesResumable(storageRef, img);
@@ -24,11 +24,11 @@ export default function Input({ currentUser }) {
         (error) => {},
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-            await updateDoc(doc(firestore, "chats", data.user.uid), {
+            await updateDoc(doc(firestore, "chats", data.chatId), {
               messages: arrayUnion({
                 id: uuid(),
                 text,
-                senderId: currentUser.id,
+                senderId: currentUser.uid,
                 date: Timestamp.now(),
                 img: downloadURL,
               }),
@@ -37,15 +37,30 @@ export default function Input({ currentUser }) {
         }
       );
     } else {
-      await updateDoc(doc(firestore, "chats", data.user.id), {
+      await updateDoc(doc(firestore, "chats", data.chatId), {
         messages: arrayUnion({
           id: uuid(),
           text,
-          senderId: currentUser.id,
+          senderId: currentUser.uid,
           date: Timestamp.now(),
         }),
       });
     }
+    await updateDoc(doc(firestore, "userChats", currentUser.uid),{
+      [data.chatId+".lastMessage"]:{
+        text,
+      },
+      [data.chatId+".date"]:serverTimestamp(),
+    });
+    await updateDoc(doc(firestore, "userChats", data.user.uid),{
+      [data.chatId+".lastMessage"]:{
+        text,
+      },
+      [data.chatId+".date"]:serverTimestamp(),
+    });
+
+    setText("")
+    setImg(null)
   };
   return (
     <div className="input">
@@ -53,6 +68,7 @@ export default function Input({ currentUser }) {
         type="text"
         placeholder="Escribe algo..."
         onChange={(e) => setText(e.target.value)}
+        value={text}
       />
       <div className="send">
         <IoIosAttach className="send-icon" />
