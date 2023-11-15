@@ -8,9 +8,13 @@ import "react-toastify/dist/ReactToastify.css";
 import "reactjs-popup/dist/index.css";
 import "react-quill/dist/quill.snow.css";
 import "./index.scss";
+import { ChatContextProvider } from "./components/common/context/ChatContext";
+import { AuthContext, AuthContextProvider } from "./components/common/context/AuthContext";
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-    <ToastContainer />
-  </React.StrictMode>
+  <AuthContextProvider>
+    <React.StrictMode>
+      <RouterProvider router={router} />
+      <ToastContainer />
+    </React.StrictMode>
+  </AuthContextProvider>
 );

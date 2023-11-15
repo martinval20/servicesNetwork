@@ -22,8 +22,10 @@ export default function RegisterComponent() {
       try {
         let res = await RegisterAPI(credentials.email, credentials.password);
         toast.success("¡Tu cuenta se ha registrado exitosamente!");
+        const unique= getUniqueID();
         postUserData({
-          userID: getUniqueID(),
+          userID: unique,
+          uid: res.user.uid,
           name: credentials.name,
           lastname: credentials.lastname,
           email: credentials.email,
@@ -32,6 +34,7 @@ export default function RegisterComponent() {
         });
         navigate("/home");
         localStorage.setItem("userEmail", res.user.email);
+        createUserChats(res.user.uid);//REVISAR
       } catch (err) {
         console.log(err);
         toast.error("Algo salió mal, intente más tarde :(");

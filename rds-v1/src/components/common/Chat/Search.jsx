@@ -1,12 +1,21 @@
 //CHECK THIS LEATER
 import React, { useState } from "react";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  query,
+  serverTimestamp,
+  setDoc,
+  updateDoc,
+  where,
+} from "firebase/firestore";
 import { firestore } from "../../../firebaseConfig";
-import { createUserChats } from "../../../api/FirestoreAPI";
 
 export default function Search({ currentUser }) {
   const [username, setUsername] = useState("");
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState("");
   const [err, setErr] = useState(false);
 
   const handleSearch = async () => {
@@ -27,21 +36,53 @@ export default function Search({ currentUser }) {
   const handleKey = (e) => {
     e.code === "Enter" && handleSearch();
   };
-  const combinedId =
-    currentUser.id > user.id
-      ? currentUser.id + user.id
-      : user.id + currentUser.id;
 
   const handleSelect = async () => {
-    //Check the group (chats in firestore)exists, if not then create
-    // const res = await getDocs(firestore, "chats");
-    console.log(user.length)
-    console.log(currentUser.id);
-    console.log(combinedId);
-    // getChat(combinedId)
-    //create user chats
-  };
+    // console.log(user.uid);
+    // console.log(user.name);
+    // console.log(user.lastname);
+    // console.log(user.imageLink);
+    // console.log(currentUser.uid);
+    // console.log(currentUser.name);
+    // console.log(currentUser.lastname);
+    // console.log(currentUser.imageLink);
+    const combinedId =
+      currentUser.uid > user.uid
+        ? currentUser.uid + user.uid
+        : user.uid + currentUser.uid;
+    try {
+      const res = await getDoc(doc(firestore, "chats", combinedId));
 
+      if (!res.exists()) {
+        //create a chat in chats collection
+        await setDoc(doc(firestore, "chats", combinedId), { messages: [] });
+
+        //create user chats
+        await updateDoc(doc(firestore, "userChats", currentUser.uid), {
+          [combinedId+".userInfo"]: {
+            uid: user.uid,
+            name: user.name,
+            lastname: user.lastname,
+            imageLink: user.imageLink,
+          },
+          [combinedId+ ".date"]: serverTimestamp(),
+        });
+
+        await updateDoc(doc(firestore, "userChats", user.uid), {
+          [combinedId + ".userInfo"]: {
+            uid: currentUser.uid,
+            name: currentUser.name,
+            lastname: currentUser.lastname,
+            imageLink: currentUser.imageLink,
+          },
+          [combinedId + ".date"]: serverTimestamp(),
+        });
+      }
+    } catch (err) {}
+
+    setUser("");
+    setUsername("");
+  };
   return (
     <div className="search">
       <div className="searchForm">
@@ -50,9 +91,15 @@ export default function Search({ currentUser }) {
           placeholder="Buscar contacto"
           onKeyDown={handleKey}
           onChange={(e) => setUsername(e.target.value)}
+          value={username}
         />
       </div>
-      {user.length == 0 ? (<></>):(
+      {/* {username.length === 0 ? (
+        <></>
+      ) : ( */}
+
+      {err && <span>Usuario no encontrado</span>}
+      {user && (
         <div className="userChat" onClick={handleSelect}>
           <img src={user.imageLink} alt="" />
           <div className="userChatInfo">
@@ -62,6 +109,7 @@ export default function Search({ currentUser }) {
           </div>
         </div>
       )}
+      {/* )} */}
     </div>
   );
 }

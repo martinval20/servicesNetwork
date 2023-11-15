@@ -25,12 +25,8 @@ let contactRef = collection(firestore, "contacts");
 let userChatsRef = collection(firestore, "userChats");
 let chatsRef = collection(firestore, "chats");
 
-export const createUserChats = (object) => {
-  addDoc(userChatsRef, object)
-    .then(() => {})
-    .catch((err) => {
-      console.log(err);
-    });
+export const createUserChats = (id) => {
+  setDoc(doc(firestore, "userChats", id), {});
 };
 
 export const sendMessage = (MessageId, message) => {

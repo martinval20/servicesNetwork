@@ -1,17 +1,19 @@
-import React, { useMemo, useState } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import { getContacts } from "../../../api/FirestoreAPI";
 import { BsFillCameraVideoFill, BsPersonAdd } from "react-icons/bs";
 import { useLocation } from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
 import Messages from "./Messages";
 import Input from "./Input";
+import { ChatContext } from "../context/ChatContext";
 
 export default function Chat({ currentUser }) {
   let location = useLocation();
+  const [user, setUser] = useState([]);
   const [currentProfile, setCurrentProfile] = useState({});
   const [currentImage, setCurrentImage] = useState({});
   const [isContacted, setIsContacted] = useState(false);
-  console.log(currentUser.lastname)
+  const {data} = useContext(ChatContext);
   useMemo(() => {
     if (location?.state?.email) {
       getSingleUser(setCurrentProfile, location?.state?.email);
@@ -21,9 +23,9 @@ export default function Chat({ currentUser }) {
   return isContacted ? (
     <></>
   ) : (
-    <div className="chat">
+    <div className="chat" >
       <div className="chatInfo">
-        <span>{currentUser.name} {currentUser.lastname}</span>
+        <span>{data.user?.name} {data.user?.lastname}</span>
         <div className="chatIcons">
           <BsFillCameraVideoFill className="action-icon" />
           <BsPersonAdd className="action-icon" />
@@ -31,7 +33,7 @@ export default function Chat({ currentUser }) {
         </div>
       </div>
       <Messages />
-      <Input />
+      <Input currentUser={currentUser}/>
     </div>
   );
 }

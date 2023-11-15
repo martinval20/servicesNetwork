@@ -9,9 +9,6 @@ export default function Sidebar({ currentUser }) {
       <Navbar currentUser={currentUser} />
       <Search currentUser={currentUser} />
       <Chats />
-      <Chats />
-      <Chats />
-      <Chats />
     </div>
   );
 }
