@@ -19,6 +19,7 @@ export default function PostStatus({ currentUser }) {
     let object = {
       status: status,
       timeStamp: getCurrentTimeStamp("LLLL"),
+      // timeStamp: Timestamp.now(),
       userEmail: currentUser.email,
       userName: currentUser.name,
       userLastname: currentUser.lastname,

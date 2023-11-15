@@ -8,7 +8,7 @@ export default function Sidebar({ currentUser }) {
     <div className="sidebar">
       <Navbar currentUser={currentUser} />
       <Search currentUser={currentUser} />
-      <Chats currentUser={currentUser}/>
+      <Chats />
     </div>
   );
 }
