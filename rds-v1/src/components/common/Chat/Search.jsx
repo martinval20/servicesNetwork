@@ -1,4 +1,3 @@
-//CHECK THIS LEATER
 import React, { useState } from "react";
 import {
   collection,
@@ -38,14 +37,7 @@ export default function Search({ currentUser }) {
   };
 
   const handleSelect = async () => {
-    // console.log(user.uid);
-    // console.log(user.name);
-    // console.log(user.lastname);
-    // console.log(user.imageLink);
-    // console.log(currentUser.uid);
-    // console.log(currentUser.name);
-    // console.log(currentUser.lastname);
-    // console.log(currentUser.imageLink);
+
     const combinedId =
       currentUser.uid > user.uid
         ? currentUser.uid + user.uid

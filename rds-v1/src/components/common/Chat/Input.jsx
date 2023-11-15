@@ -5,14 +5,12 @@ import { MdOutlineAddPhotoAlternate } from "react-icons/md";
 import { firestore, storage } from "../../../firebaseConfig";
 import uuid from "react-uuid";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
 
 export default function Input({ currentUser }) {
   const [text, setText] = useState("");
   const [img, setImg] = useState(null);
 
-   const { currentUser1 } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
 
   const handleSend = async () => {
