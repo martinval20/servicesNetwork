@@ -38,7 +38,7 @@ const Chats= () => {
             <span>
               {chat[1].userInfo.name} {chat[1].userInfo.lastname}
             </span>
-            <p>{chat[1].userInfo.lastMessage?.text}</p>
+            <p>{chat[1].lastMessage?.text}</p>
           </div>
         </div>
       ))}
