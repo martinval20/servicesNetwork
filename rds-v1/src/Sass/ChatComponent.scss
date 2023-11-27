@@ -28,16 +28,17 @@ $orange13: #f7f0d9;
 }
  
 .home {
-  background-color: $orange8;
+  background-color: $orange1;
   height: 100hv;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
   .container {
     border: 1px solid #212121;
-    border-radius: 10px;
-    width: 65%;
+    border-radius: 20px;
+    width: 70%;
     height: 600px;
     display: flex;
     overflow: hidden;
@@ -51,19 +52,21 @@ $orange13: #f7f0d9;
       .navbar {
         display: flex;
         align-items: center;
-        background-color: $orange2;
+        background-color: $orange12;
         height: 50px;
         padding: 10px;
+        font-family: system-ui;
+        font-weight: bold;
         justify-content: space-between;
-        color: $orange3;
+        color: #212121;
         .user {
           display: flex;
           gap: 20px;
         }
         img {
-          background-color: #ddddf7;
-          height: 24px;
-          width: 24px;
+          background-color: #0000ff;
+          height: 30px;
+          width: 30px;
           border-radius: 50%;
           object-fit: cover;
         }
@@ -73,9 +76,12 @@ $orange13: #f7f0d9;
 
         .searchForm {
           padding: 10px;
+          width: 100px;
           input {
             background-color: $orange2;
+            height: 25px;
             border: none;
+            border-radius: 5px;
             color: black;
             &::placeholder {
               color: lightgrey;
@@ -95,18 +101,18 @@ $orange13: #f7f0d9;
         }
 
         img {
-          width: 50px;
-          height: 50px;
+          width: 60px;
+          height: 60px;
           border-radius: 50%;
           object-fit: cover;
         }
         .userChatInfo {
           span {
-            font-size: 18px;
-            font-weight: 500;
+            font-size: 15px;
+            font-weight: 600;
           }
           p {
-            font-size: 14px;
+            font-size: 12px;
             color: lightgrey;
           }
         }
@@ -122,6 +128,8 @@ $orange13: #f7f0d9;
         justify-content: space-between;
         padding: 10px;
         color: #212121;
+        font-size: 20px;
+        font-weight: bold;
       }
       .chatIcons {
         display: flex;
@@ -136,6 +144,7 @@ $orange13: #f7f0d9;
         padding: 10px;
         height: calc(100% - 160px);
         overflow: scroll;
+        overflow-x: hidden;
 
         .message{
             display: flex;
@@ -148,8 +157,8 @@ $orange13: #f7f0d9;
                 color: gray;
                 font-weight: 300;
                 img{
-                    width: 40px;
-                    height: 40px;
+                    width: 45px;
+                    height: 45px;
                     border-radius: 50%;
                     object-fit: cover;
                 }
@@ -176,7 +185,7 @@ $orange13: #f7f0d9;
                 }
                 p{
                     background-color: $orange2;
-                    color: white;
+                    color: rgb(14, 14, 14);
                     border-radius: 10px 0px 10px 10px;
                 }
             }
@@ -193,10 +202,10 @@ $orange13: #f7f0d9;
             width: 100%;
             border: none;   
             outline: none;
-            color: #2f2d55;
+            color: #000000;
             font-size: 18px;
             &::placeholder{
-                color: lightgray;
+                color: rgb(144, 144, 144);
             }
         }
         .send{
@@ -209,6 +218,7 @@ $orange13: #f7f0d9;
             }
             button{
                 border: none;
+                border-radius: 30px;
                 padding: 10px 15px;
                 color: white;
                 background-color: $orange3;
@@ -218,4 +228,15 @@ $orange13: #f7f0d9;
       }
     }
   }
+  div::-webkit-scrollbar{
+    width: 10px;
+    background-color: $orange3;
+  }
+  div::-webkit-scrollbar-thumb{
+    background: rgba($color: $orange9, $alpha: 1.0);
+    border-radius: 10px;
+    border-right: 2px solid $orange6;
+  }
+  
 }
+

@@ -14,10 +14,21 @@ $orange9: #e26a2c;
 $orange10: #ff8243;
 $orange11: #ffae69;
 $orange12: #ffd792;
+$orange13: #f7f0d9;
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color: #212121;
   background-color: $orange2;
+  body::-webkit-scrollbar{
+    width: 10px;
+    background-color: $orange13;
+  }
+  body::-webkit-scrollbar-thumb{
+    background: rgba($color: $orange5, $alpha: 1.0);
+    border-radius: 10px;
+    border-right: 2px solid #212121;
+  }
 }
+

@@ -22,7 +22,7 @@ export default function RegisterComponent() {
       try {
         let res = await RegisterAPI(credentials.email, credentials.password);
         toast.success("¡Tu cuenta se ha registrado exitosamente!");
-        const unique= getUniqueID();
+        const unique = getUniqueID();
         postUserData({
           userID: unique,
           uid: res.user.uid,
@@ -30,11 +30,11 @@ export default function RegisterComponent() {
           lastname: credentials.lastname,
           email: credentials.email,
           imageLink:
-            "https://objetivoligar.com/wp-content/uploads/2017/03/blank-profile-picture-973460_1280-768x768.jpg",
+            "https://www.opb.gob.mx/portal/gaceta-municipal/imagenes/perfiles/sin_perfil.jpg",
         });
         navigate("/home");
         localStorage.setItem("userEmail", res.user.email);
-        createUserChats(res.user.uid);//REVISAR
+        createUserChats(res.user.uid); //REVISAR
       } catch (err) {
         console.log(err);
         toast.error("Algo salió mal, intente más tarde :(");
@@ -80,6 +80,7 @@ export default function RegisterComponent() {
               className="common-input"
               required
               autoComplete="off"
+              pattern="[A-Za-z]{2-20}"
               type="text"
               id="lastname"
             />
@@ -96,6 +97,7 @@ export default function RegisterComponent() {
               className="common-input"
               required
               autoComplete="off"
+              pattern="[A-Za-z]{2-20}"
               type="email"
               id="email"
             />

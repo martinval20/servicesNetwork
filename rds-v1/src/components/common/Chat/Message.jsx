@@ -2,8 +2,7 @@ import React, { useContext, useEffect, useRef } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
 
-const Message = ({ message }) => {
-  const { currentUser } = useContext(AuthContext);
+const Message = ({ currentUser, message }) => {
   const { data } = useContext(ChatContext);
   const ref= useRef()
   useEffect(()=>{
@@ -22,7 +21,6 @@ const Message = ({ message }) => {
           }
           alt=""
         />
-        <span>Justo ahora</span>
       </div>
       <div className="messageContent">
         <p>{message.text}</p>

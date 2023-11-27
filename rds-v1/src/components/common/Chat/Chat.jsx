@@ -9,9 +9,7 @@ import { ChatContext } from "../context/ChatContext";
 
 export default function Chat({ currentUser }) {
   let location = useLocation();
-  const [user, setUser] = useState([]);
   const [currentProfile, setCurrentProfile] = useState({});
-  const [currentImage, setCurrentImage] = useState({});
   const [isContacted, setIsContacted] = useState(false);
   const {data} = useContext(ChatContext);
   useMemo(() => {
@@ -32,7 +30,7 @@ export default function Chat({ currentUser }) {
           <FiSettings className="action-icon" />
         </div>
       </div>
-      <Messages />
+      <Messages currentUser={currentUser}/>
       <Input currentUser={currentUser}/>
     </div>
   );
