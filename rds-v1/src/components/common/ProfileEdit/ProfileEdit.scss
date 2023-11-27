@@ -42,6 +42,21 @@ $orange13: #f7f0d9;
       margin: 50 0px;
       z-index: 0;
     }
+    .common-textArea{
+      color: $orange7;
+      padding: 1rem;
+      border: 2px solid $orange12;
+      border-radius: 10px;
+      transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      background-color: $orange2;
+      height: 100px;
+      width: 500px;
+      resize: none;
+      font-family: system-ui;
+      font-size: 20px;
+      margin: 50 0px;
+      z-index: 0;
+    }
     .label {
       position: absolute;
       font-family: system-ui;

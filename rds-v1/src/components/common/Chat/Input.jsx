@@ -74,6 +74,7 @@ export default function Input({ currentUser }) {
           type="file"
           style={{ display: "none" }}
           id="file"
+          accept="image/*"
           onChange={(e) => setImg(e.target.files[0])}
         />
         <label htmlFor="file">
