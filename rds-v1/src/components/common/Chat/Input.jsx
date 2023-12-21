@@ -14,7 +14,6 @@ export default function Input({ currentUser }) {
   const { data } = useContext(ChatContext);
 
   const handleSend = async () => {
-    console.log(data.user.id);
     if (img) {
       const storageRef = ref(storage, `chatImages/${uuid()}`);
       const uploadTask = uploadBytesResumable(storageRef, img);

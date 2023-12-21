@@ -67,7 +67,6 @@ export default function PostStatus({ currentUser }) {
         <button
           className="open-post-modal"
           onClick={() => {
-            console.log(getCurrentTimeStamp("LLLL"));
             setModalOpen(true);
             setIsEdit(false);
           }}
