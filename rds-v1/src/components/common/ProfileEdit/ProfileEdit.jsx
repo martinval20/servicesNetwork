@@ -13,10 +13,8 @@ export default function ProfileEdit({ onEdit, currentUser }) {
   const updateProfileData = async () => {
     await editProfile(currentUser?.id, editInputs);
     await onEdit();
-    //console.log(currentUser?.userID, editInputs);
   };
   //To see what I'm sending...
-  //console.log(editInputs);
   return (
     <div className="profile-card">
       <div className="edit-btn1">
