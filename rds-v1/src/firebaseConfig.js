@@ -7,7 +7,7 @@ import { getStorage } from "firebase/storage";
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Your web app's Firebase configurations
 const firebaseConfig = {
-  apiKey: "AIzaSyAuKQqRCLq0nBCmF_2dQ7s5In4fXTejhbU",
+  apiKey: import.meta.env.VITE_FIREBASE_KEY,
   authDomain: "redservice-e3880.firebaseapp.com",
   projectId: "redservice-e3880",
   storageBucket: "redservice-e3880.appspot.com",
